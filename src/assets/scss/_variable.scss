@@ -1,0 +1,161 @@
+$random:"?"+random(10000);
+
+//字體
+$font-Style:"Microsoft JhengHei";
+$main-color:#fff;
+$section-bg-color:#f8f9f9;
+$banner-slogn-color:#eeee22;
+$footer-Bg-Color:#222222;
+$footer-color:#999999;
+$icon-Bg-color:#00b703;
+$mask:rgba(0,0,0,0.5);
+$shadow:rgba(0,0,0,0.08);
+
+$link:(
+    'normal':#00b703,
+    'hover':#777777,
+);
+
+//選單字體顏色
+$menuGrouop:(
+    'lg-fontSize':13px,
+    'lg-normal':#333333,
+    'lg-hover':#00b703,
+    'sm-normal':#777777,
+    'sm-hover':#333333,
+);
+
+$title-color:#333333;
+$sub-title-color:#aaaaaa;
+$content-color:#777777;
+
+$bannerImage:'../_img/Home_Title_Phone.fw_-1.png';
+
+//動畫前綴
+$experimental-support-for-webkit: true;
+$experimental-support-for-mozilla: true;
+$experimental-support-for-opera: true;
+$experimental-support-for-microsoft: true;
+$experimental-support-for-khtml: false;
+
+//z-index
+$z-index: (
+  message  :101,
+  video    :100,
+  header   : 90,
+  footer   : 90,
+  back_top : 0,
+);
+
+//字體大小   
+$mainTitle-fontSize:(
+    //'xxs':3vmin,
+    'content-lg':20px,
+    'sub-title-md':12px,
+    'sub-title-lg':14px,
+    'title-md':30px,
+    'title-lg':40px,
+);
+
+$banner-fontSize:(
+    'subSlogn-xxs':14px,
+    'slogn-xxs':30px,
+    'slogn-xs':35px,
+    'slogn-sm':40px,
+    'slogn-md':60px,
+    'slogn-lg':75px,
+);
+
+$icon-fontSize:(
+    'content-lg':14px,
+    'title-fontWeight':600,
+    'title-lg':16px,  
+);
+
+$counterGroup-fontSize:(
+    'counter-sub-lg':18px,
+    'counter-lg':50px,
+);
+
+$card-fontSize:(
+    'content-lg':10px,
+    'title-lg':16px,
+);
+
+$btn:(
+    'btn-fontSize':16px,
+    'normal-txt':#fff,
+    'normal-border':#fff,
+    'normal-bg':transparent,
+    'hover-txt':#333,
+    'hover-bg':#fff,
+);
+
+$breakpoints:(
+    xxs: 320px,//ios se5
+    xs : 575.98px,
+    sm : 767.98px,
+    md : 991.98px,
+    lg : 1199.98px
+);
+
+
+
+//按鈕命名
+//普通主要使用的按鈕
+// $btn-primary:(
+//     'txt':#fff,
+//     'bg':black,
+//     'border':green,
+//     'hover':green,
+//     'normal':black,
+// );
+
+//取消按鈕
+// $btn-cancle:(
+//     'txt':#fff,
+//     'bg':#fff,
+//     'border':rgba(255,255,255,0.3),
+//     'normal':#fff,
+//     'hover':#fff,
+// );
+
+//確認按鈕
+// $btn-sure:(
+//     'txt':#fff,
+//     'bg':#fff,
+//     'border':rgba(255,255,255,0.3),
+//     'normal':#fff,
+//     'hover':#fff,
+// );
+
+//tag
+// $tag:(
+//     'system':#f00,
+//     'events':#E1B458
+// );
+
+// $sub-menu:(
+//     'normal':#fff,
+//     'hover':#fff
+// );
+
+//推薦專頁順置頂順序
+// $top-list:"/Content/img/mobile_icon_top_1_text.png"+$random,"/Content/img/mobile_icon_top_2_text.png"+$random,"/Content/img/mobile_icon_top_3_text.png"+$random;
+
+//btn-圖片
+// $btns:'newArticle','res';
+// $btnList:(
+//     'newArticle':'/Content/img/mobile_icon_button_issue_normal.png'+$random,
+//     'res':'/Content/img/mobile_icon_button_issue_normal.png'+$random
+// );
+
+//icon
+// $icons:'message','shopList','favoriates';
+// $iconsList:(
+// 'shopList':"/Content/img/mobile_icon_list_normalIcon.png"+$random,
+// 'message':"/Content/img/mobile_icon_chart_normalIcon.png"+$random,
+// 'favoriates':"/Content/img/mobile_icon_favorite_normal_insideIcon.png"+$random,
+// 'favoriates-icon_already':"/Content/img/mobile_icon_favorite_normal_inside_topIcon.png"+$random
+// );
+

@@ -1,0 +1,32 @@
+.service{
+    .serviceArea{
+        &.active{
+            opacity:0;
+            @include animation(pageIn,.3s,linear,false,1,normal,forwards);
+        }
+        .item{
+            .item-card{
+                padding:5%;
+                background:$main-color;
+                @include box-shadow(0px, 1px, 1px, $shadow, $inset: false);
+                &:hover{
+                    @include box-shadow(0px, 1px, 5px, $shadow, $inset: false);
+                }
+                .item-media{
+                    width:70px;
+                    height:70px;
+                    i{
+                        @include transform(scale(1));
+                    }
+                    @include media-max('sm'){
+                        width:100%;
+                    }
+                    @include media-max('xs'){
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+    
+}

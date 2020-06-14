@@ -1,0 +1,8 @@
+.contact{
+   .contactArea{
+        &.active{
+            opacity:0;
+        @include animation(pageIn,.3s,linear,false,1,normal,forwards);
+    }
+   }
+}

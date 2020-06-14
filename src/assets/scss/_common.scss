@@ -1,0 +1,89 @@
+
+*{
+    outline: 0;
+    @include box-sizing(border-box);
+}
+
+body{
+    // background:url($default_Background_color);
+    font-family:$font-Style;
+}
+
+section{
+    letter-spacing:3px;
+    background:$section-bg-color;
+    h1{
+        color:$title-color;
+        font-size:map-get($mainTitle-fontSize,'title-lg');
+        @include media-max('md'){
+            font-size:map-get($mainTitle-fontSize,'title-md');
+        }
+    }
+    .sub-title{
+        color:$sub-title-color;
+        font-size:map-get($mainTitle-fontSize,'sub-title-lg');
+        @include media-max('md'){
+            font-size:map-get($mainTitle-fontSize,'sub-title-md');
+        }
+    }
+    .content{
+        letter-spacing:1px;
+        color:$content-color;
+        font-size:map-get($mainTitle-fontSize,'content-lg');
+    }
+    .item{
+        .item-media{
+            i{
+                color:$icon-Bg-color;
+                @include transform(scale(.7));
+            }
+        }
+        .item-description{
+            h4.item-title{
+                font-weight:600;
+                font-size:map-get($icon-fontSize,'title-lg');
+            }
+            .item-content{
+                color:$content-color;
+                font-size:map-get($icon-fontSize,'content-lg');
+            }
+        }
+    }
+    a{
+        color:map-get($link,'normal');
+        @include transition(.3s);
+        &:hover{
+            color:map-get($link,'hover'); 
+        }
+    }
+}
+.mask{
+    background:$mask;
+}
+
+.back-top{
+    display: block;
+    width:70px;
+    height:70px;
+    background:$footer-Bg-Color;
+    @include rounded(20px);
+    @include z-index(back_top);
+    @include sticky(top bottom);
+    @include transition(all 0.2s linear 0s);
+    @include transform(translateY(40px)rotate(-45deg));
+    i{
+        color: $footer-color;
+        font-size:30px;
+        margin-left:5px;
+        margin-top:-29px;
+        @include transform (rotate(45deg));
+        @include absolute(top 50% left 50%);
+    }
+    &:hover{
+        i{
+            color:map-get($link,'normal');
+            @include transition(all 0.2s linear 0s);
+        }
+    }
+}
+

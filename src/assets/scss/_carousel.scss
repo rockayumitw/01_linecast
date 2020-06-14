@@ -1,0 +1,76 @@
+.carouselArea{
+    overflow:hidden;
+    letter-spacing:3px;
+    @include relative();
+    @include imgBg($bannerImage, false, false, false, 100%, no-repeat, top);
+    @include media-max('xs'){
+        background-position-y:bottom;
+        background-size:cover;
+    }
+    .contentArea{
+        padding:25% 0 15% 0;
+        line-height:20px;
+        @include media-max('xs'){
+            padding:20% 0 10% 0;
+        }
+        @include media-max('xxs'){
+            padding:10% 0 5% 0;
+        }
+        h1{
+            line-height:100px;
+            font-size:map-get($banner-fontSize,'slogn-lg');
+            @include opacity(0);
+            @include transform(translateY(50px));
+            @include animation(carousel_Slogn_Move,.5s,ease-in,false,1,normal,forwards);
+            @include media-max('md'){
+                font-size:map-get($banner-fontSize,'slogn-md');
+            }
+            @include media-max('sm'){
+                line-height:60px;
+                font-size:map-get($banner-fontSize,'slogn-sm');
+            }
+            @include media-max('xs'){
+                line-height:50px;
+                font-size:map-get($banner-fontSize,'slogn-xs');
+            }
+            @include media-max('xxs'){
+                padding:10% 0 5% 0;
+                margin-bottom:0;
+                font-size:map-get($banner-fontSize,'slogn-xxs');
+            }
+            .slognArea{
+                position:relative;
+                .slogn{
+                    color:$banner-slogn-color;
+                    @include media-max('xxs'){
+                        margin-bottom:0;
+                    }
+                }
+            }
+            
+        }
+        a.btn-secondary-outline{
+            letter-spacing:1px;
+            font-size:map-get($btn,'btn-fontSize');
+            margin: 0.625rem 0.625rem 1.25rem 0px;
+            @include rounded(0);
+            @include opacity(0);
+            @include transform(translateY(50px));
+            @include button($main-color,$main-color,1px solid $main-color);
+            @include animation(carousel_Slogn_Move,.5s,ease-in,.1s,1,normal,forwards);
+        }
+    }
+}
+
+//slogn 動畫
+
+@include keyframes(carousel_Slogn_Move){
+    0%{
+        @include opacity(0);
+        @include transform(translateY(50px));
+    }
+    100%{
+        @include opacity(1);
+        @include transform(translateY(0px));
+    }
+}

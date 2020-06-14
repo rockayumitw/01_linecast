@@ -1,0 +1,10 @@
+.counter{
+    .number{
+        color:$icon-Bg-color;
+        font-size:map-get($counterGroup-fontSize,'counter-lg');
+    }
+    .item-title{
+        color:$content-color;
+        font-size:map-get($counterGroup-fontSize,'counter-sub-lg');
+    }
+}

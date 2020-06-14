@@ -1,0 +1,17 @@
+.team{
+    .teamArea{
+        .item-description{
+            .item-title{
+                font-weight:bold;
+            }
+            span{
+                font-size:12px;
+            }
+        }
+        
+        &.active{
+             opacity:0;
+            @include animation(pageIn,.3s,linear,false,1,normal,forwards);
+        }
+    }
+}

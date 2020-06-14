@@ -1,0 +1,39 @@
+.worthCase{
+    .featureArea{
+        &.active{
+            opacity:0;
+            @include animation(pageIn,.3s,linear,false,1,normal,forwards);
+        }
+        .item{
+            &:hover{
+                i:nth-child(1){
+                    @include animation(bg_Scale,.3s,linear,false,1,normal,forwards) 
+                }
+            }
+        } 
+    }
+    
+}
+
+@include keyframes(bg_Scale){
+    0%{
+        @include transform(scale(.7));
+    }
+    100%{
+        color:$title-color;
+        @include transform(scale(.75));
+    }
+}
+
+
+@include keyframes(pageIn){
+    0%{
+        opacity:0;
+        transform: translateY(100px);
+    }
+    100%{
+        opacity:1;
+        transform: translateY(0px);
+       
+    }
+}

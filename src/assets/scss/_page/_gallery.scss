@@ -1,0 +1,16 @@
+.gallery{
+    .item{
+        a{
+            display:block;
+            overflow:hidden;
+            margin:1%;
+            &:hover{
+                img{
+                    @include transition(.5s);
+                    @include transform(scale(1.5));
+                }
+            }
+        }
+        
+    }
+}

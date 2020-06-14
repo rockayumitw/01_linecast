@@ -1,0 +1,268 @@
+//writing-mode: vertical-lr;
+//writing-mode:
+
+//字體大小計算
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+//box-Sizing
+@mixin box-sizing($type)
+ {
+ -webkit-box-sizing:$type;
+ -moz-box-sizing:$type;
+ box-sizing:$type;
+ }
+
+ //置中對齊
+ @mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+//display=>Show/Hide
+@mixin display($disp) {
+  @if $disp == show {
+    display: block;
+  }
+  @if $disp == hide {
+    display: none;
+  }
+}
+
+//計算zIndex
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+@mixin absolute($args: ()) {
+  @include position(absolute, $args);
+}
+ 
+@mixin fixed($args: ()) {
+  @include position(fixed, $args);
+}
+
+@mixin sticky($args: ()) {
+  @include position(sticky, $args);
+}
+ 
+@mixin relative($args: ()) {
+  @include position(relative, $args);
+}
+
+//計算position : relative | fixed | absolute
+@mixin position($position, $args: ()) {
+  $offsets: top right bottom left;
+  position: $position;                                               
+  
+  @each $offset in $offsets {                                        
+    $index: index($args, $offset);                                   
+    
+    @if $index {                                                     
+      @if $index == length($args) {                                  
+        #{$offset}: 0;                                               
+      }
+      @else {                                                        
+        $next: nth($args, $index + 1);                               
+        @if is-valid-length($next) {                                 
+          #{$offset}: $next;                                         
+        }
+        @else if index($offsets, $next) {                            
+          #{$offset}: 0;                                             
+        }
+        @else {                                                      
+          @warn "Invalid value `#{$next}` for offset `#{$offset}`."; 
+        }
+      }
+    }
+  }
+}
+
+@function is-valid-length($value) {
+  @return (type-of($value) == "number" and not unitless($value)) 
+       or (index(auto initial inherit 0, $value) != false);
+}
+//@include absolute(top 14px left 15px)
+
+//border=> "false" | top | right | bottom | left
+//@include(top,1px,solid,#fff)
+@mixin border($direction, $width, $style, $color) {
+  @if $direction != "false" {
+    border-#{$direction}: $width $style $color;
+  }
+  @if $direction == "false" {
+    border: $width $style $color;
+  }
+}
+
+//圓角
+@mixin rounded($radius: 0.5em) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//shadow => 
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset { //內陰影
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+//btn-color=>darken | lighten
+@mixin button($color,$bg,$border) {
+  color:$color;
+  // background: darken($bg,0%);
+  background: rgba($bg,0%);
+  border:$border;
+  &:hover {
+    color:darken($color,80%) !important;
+    background:lighten($bg,100%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    color:darken($color,25%);
+    background:darken($bg,25%);
+  } 
+}
+// @mixin btnGroup($color, $background, $border) {
+//   color: $color;
+//   background-color: darken($background, 10%);
+//   border-color: darken($border, 10%);
+
+//   &:hover,
+//   &:focus,
+//   &:active,
+//   &.active,
+//   .open > &.dropdown-toggle {
+//     color: $color;
+//     background-color: darken($background, 0%);
+//     border-color: darken($border, 0%);
+//     //lighten(color,10%)
+//   }
+
+//   &:active,
+//   &.active,
+//   .open > &.dropdown-toggle {
+//     background-image: none;
+//   }
+
+//   &.disabled,
+//   &[disabled],
+//   fieldset[disabled] & {
+//     &,
+//     &:hover,
+//     &:focus,
+//     &:active,
+//     &.active {
+//       background-color: $background;
+//       border-color: $border;
+//     }
+//   }
+// }
+
+//圖片調整
+@mixin imgBg($bgImage, $width, $height, $bg, $bgSize, $repeat, $position) {
+  @if $bgImage {
+    background-image: url($bgImage);
+  }
+  @if $width {
+    width: $width;
+  }
+  @if $height {
+    height: $height;
+  }
+  @if $bg {
+    background: $bg;
+  }
+  background-size: $bgSize;
+  background-repeat: $repeat;
+  background-position: $position;
+}
+
+//rwd-最小寬度
+@mixin media-max($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+//rwd-最大寬度
+@mixin media-min($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+//...隱藏最大寬度
+//multiline
+@mixin ellipse($type, $num) {
+  @if ($type == "single") {
+    white-space: nowrap;
+  }
+  @if ($type == "multiline") {
+    white-space: inherit;
+    display: -webkit-box;
+    word-break: break-word;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $num;
+  -moz-line-clamp: $num;
+  -ms-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  -ms-box-orient: vertical;
+}
+
+//字體設定
+@mixin font-source-sans($font-size: false, $letterSpacing: false, $color: false, $weight: false, $line-height: false) {
+  font-family: $font-Style;
+  @if $letterSpacing {
+    letter-spacing: $letterSpacing;
+  }
+  @if $font-size {
+    font-size: $font-size;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $line-height {
+    line-height: $line-height;
+  }
+}
+
+//透明度跨瀏覽
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+  // @include opacity(0.8);
+}
+

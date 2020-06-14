@@ -1,0 +1,33 @@
+.video{
+    position:relative;
+    @include imgBg($bannerImage, false, false, false, 100%, no-repeat, center);
+    .videoBox{
+        padding:10% 0;
+        .video_icon{
+            width:50px;
+            height:50px;
+            display: inline-block;
+            background:$mask;
+            @include relative();
+            @include rounded(100%);
+            @include border("false",$main-color,4px,solid);
+            @include transition(.3s);
+            i{
+                font-size:20px;
+                margin-left:-6px;
+                margin-top:-10px;
+                color:$main-color;
+                @include absolute(left 50% top 50%);
+            }
+            &:hover{
+                background:$main-color;
+                i{
+                    color:$mask;
+                }
+            }
+        }
+        strong.slogn{
+            font-size:get-map($mainTitle-fontSize,'title-lg');
+        }
+    }
+}

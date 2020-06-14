@@ -1,0 +1,15 @@
+.footerArea{
+    position:relative;
+    @include z-index(footer);
+    .footer{
+        background:$footer-Bg-Color;
+        color:$sub-title-color;
+        font-size:12px;
+        .privacy{
+            a{
+                letter-spacing: 1px !important;
+                color:$sub-title-color;
+            }
+        }
+    }
+}

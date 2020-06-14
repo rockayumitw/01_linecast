@@ -1,0 +1,79 @@
+.header{
+    @include transition(.3s ease);
+    &.fixedTop{
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+        @include media-max('sm'){
+            padding-bottom: 0px;
+            padding-top: 0px;
+        }
+        @include media-max('xs'){
+            padding-bottom: 0px;
+            padding-top: 0px;
+        }
+    }
+    nav{
+        @include media-max('xs'){
+            padding:0;
+        }
+        img{
+            @include media-max('xs'){
+                @include transform (scale(.8));
+            }
+        }
+        .navbar-toggler{ //按鈕轉換
+            &.x{
+                .icon-bar{
+                    width: 20px;
+                    height:2px;
+                    display:block;
+                    background:#000;
+                    @include rounded(2px);
+                    @include transition(.2s);
+                    &:nth-of-type(1) {
+                        @include transform(rotate(45deg));
+                        @include transform-origin(10px -3px);
+                    }
+                    &:nth-of-type(2) {
+                        @include opacity(0);
+                    }
+                    &:nth-of-type(3) {
+                        @include transform(rotate(-45deg));
+                        @include transform-origin(2px 1px);
+                    }
+                }
+            }
+            &.x.collapsed{
+                .icon-bar{
+                    &.icon-bar:nth-of-type(1) {
+                        @include transform(rotate(0));
+                    }
+                    &.icon-bar:nth-of-type(2) {
+                        @include opacity(1);
+                        margin-top:4px;
+                    }
+                    &.icon-bar:nth-of-type(3) {
+                        @include transform(rotate(0));
+                        margin-top:4px;
+                    } 
+                }
+            }
+        }
+        ul li.nav-item{
+            a.nav-link{
+                color:map-get($menuGrouop,'lg-normal');
+                font-size:map-get($menuGrouop,'lg-fontSize');
+                @include transition(.3s);
+                @include media-max('sm'){
+                    color:map-get($menuGrouop,'sm-normal');
+                }
+                &:hover{
+                    color:map-get($menuGrouop,'lg-hover');
+                    @include media-max('sm'){
+                        color:map-get($menuGrouop,'sm-hover');
+                    }
+                }
+            }
+        }
+    }  
+}
